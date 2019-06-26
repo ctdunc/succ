@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "Ubuntu Mono:pixelsize=20:antialias=true:autohint=true";
+static char *font = "UbuntuMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -83,33 +83,32 @@ char *termname = "st-256color";
 unsigned int tabspaces = 8;
 
 /* bg opacity */
-
 /* Terminal colors (16 first used in escape sequence) */
 static const char *colorname[] = {
 
-  /* 8 normal colors */
-  [0] = "#2e3436", /* black   */
-  [1] = "#cc0000", /* red     */
-  [2] = "#4e9a06", /* green   */
-  [3] = "#c4a000", /* yellow  */
-  [4] = "#3465a4", /* blue    */
-  [5] = "#75507b", /* magenta */
-  [6] = "#06989a", /* cyan    */
-  [7] = "#d3d7cf", /* white   */
+	  /* 8 normal colors */
+	[0] = "#002b36", /* black   */
+	[1] = "#dc322f", /* red     */
+	[2] = "#859900", /* green   */
+	[3] = "#b58900", /* yellow  */
+	[4] = "#268bd2", /* blue    */
+	[5] = "#6c71c4", /* magenta */
+	[6] = "#2aa198", /* cyan    */
+	[7] = "#93a1a1", /* white   */
 
-  /* 8 bright colors */
-  [8]  = "#555753", /* black   */
-  [9]  = "#ef2929", /* red     */
-  [10] = "#8ae234", /* green   */
-  [11] = "#fce94f", /* yellow  */
-  [12] = "#729fcf", /* blue    */
-  [13] = "#ad7fa8", /* magenta */
-  [14] = "#34e2e2", /* cyan    */
-  [15] = "#eeeeec", /* white   */
-
-  /* special colors */
-  [256] = "#000000", /* background */
-  [257] = "#babdb6", /* foreground */
+	/* 8 bright colors */
+	[8]  = "#657b83", /* black   */
+	[9]  = "#dc322f", /* red     */
+	[10] = "#859900", /* green   */
+	[11] = "#b58900", /* yellow  */
+	[12] = "#268bd2", /* blue    */
+	[13] = "#6c71c4", /* magenta */
+	[14] = "#2aa198", /* cyan    */
+	[15] = "#fdf6e3", /* white   */
+						
+	/* special colors */
+	[256] = "#002b36", /* background */
+	[257] = "#93a1a1", /* foreground */
 };
 
 /*
@@ -136,7 +135,6 @@ static unsigned int defaultunderline = 7;
  * 2: Block ("█")
  * 4: Underline ("_")
  * 6: Bar ("|")
- * 7: Snowman ("☃")
  */
 static unsigned int cursorshape = 2;
 

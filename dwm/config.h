@@ -1,17 +1,17 @@
 /* See LICENSE file for copyright and license details. */
 
 /* appearance */
-static const unsigned int borderpx  = 1;        /* border pixel of windows */
+static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "UbuntuMono Nerd Font:size=11"  };
-static const char dmenufont[]       = "monospace:size=11";
-static const char col_gray1[]       = "#070707"; //background normal
-static const char col_gray2[]       = "#070707"; //border normal
-static const char col_gray3[]       = "#fbf0d2"; //foreground normal
-static const char col_gray4[]       = "#f79031"; //foreground selected
-static const char col_cyan[]        = "#a0446c"; //background/border selected
+static const char *fonts[]          = { "UbuntuMono Nerd Font:size=12"  };
+static const char dmenufont[]       = "monospace:size=12";
+static const char col_gray1[]       = "#002b36"; //background normal
+static const char col_gray2[]       = "#002b36"; //border normal
+static const char col_gray3[]       = "#93a1a1"; //foreground normal
+static const char col_gray4[]       = "#dc322f"; //foreground selected
+static const char col_cyan[]        = "#b58900"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -28,7 +28,7 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Spotify",  NULL,       NULL,       1 << 8,       0,		 -1 },
+	{ "Spotify",  NULL,  NULL,       1 << 7,       0,		 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Surf",     NULL,	  NULL,	      1 << 8,	    0,		 -1 },
 };
@@ -43,6 +43,8 @@ static const Layout layouts[] = {
 	{ "til",	tile },    /* first entry is default */
 	{ "flt",	NULL },    /* no layout function means floating behavior */
 	{ "mnc",	monocle },
+	{ "bst",	bstack	},
+	{ "bsh",	bstackhoriz },
 };
 
 /* key definitions */
@@ -81,7 +83,9 @@ static Key keys[] = {
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, //tiling layout
 	{ MODKEY|ShiftMask,		XK_f,      setlayout,      {.v = &layouts[1]} }, //floating layout
-	{ MODKEY,                       XK_f,      setlayout,      {.v = &layouts[2]} }, //monocole layout
+	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[2]} }, //monocole layout
+	{ MODKEY,			XK_e,	   setlayout,	   {.v = &layouts[3]} }, //bottom stack
+	{ MODKEY|ShiftMask,		XK_e,	   setlayout,	   {.v = &layouts[4]} }, //bottom stack hor
 	/* { MODKEY,                       XK_space,  setlayout,      {0} },*/
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
