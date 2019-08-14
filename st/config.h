@@ -5,7 +5,7 @@
  *
  * font: see http://freedesktop.org/software/fontconfig/fontconfig-user.html
  */
-static char *font = "UbuntuMono Nerd Font:pixelsize=16:antialias=true:autohint=true";
+static char *font = "Fura Code Nerd Font:pixelsize=16:antialias=true:autohint=true";
 static int borderpx = 2;
 
 /*
@@ -87,12 +87,12 @@ static const char *colorname[] = {
 	/* 8 normal colors */
 	[0] = "#000000", /* black   */
 	[1] = "#e92f2f", /* red     */
-	[2] = "#0ed839", /* green   */
+	[2] = "#3CB371", /* green   */
 	[3] = "#dddd13", /* yellow  */
 	[4] = "#3b48e3", /* blue    */
 	[5] = "#f996e2", /* magenta */
 	[6] = "#23edda", /* cyan    */
-	[7] = "#ababab", /* white   */
+	[7] = "#7a7676", /* white   */
 
 	/* 8 bright colors */
 	[8]  = "#343434", /* black   */

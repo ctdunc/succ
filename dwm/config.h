@@ -5,13 +5,13 @@ static const unsigned int borderpx  = 2;        /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "UbuntuMono Nerd Font:size=12"  };
-static const char dmenufont[]       = "monospace:size=12";
+static const char *fonts[]          = { "Fura Code Nerd Font:size=12"  };
+static const char dmenufont[]       = "Fura Code Nerd Font:size=12";
 static const char col_gray1[]       = "#000000"; //background normal
 static const char col_gray2[]       = "#000000"; //border normal
 static const char col_gray3[]       = "#ababab"; //foreground normal
-static const char col_gray4[]       = "#dddd13"; //foreground selected
-static const char col_cyan[]        = "#3b48e3"; //background/border selected
+static const char col_gray4[]       = "#3c7db3"; //foreground selected
+static const char col_cyan[]        = "#3CB371"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -21,14 +21,14 @@ static const char *colors[][3]      = {
 /* tagging */
 /* { code, pdf, admin, paused, research, processing, spotify, web} */
 static const char *tags[] = { "\ue62b", "\uf02d", "\uf303","\uf8e6", "\uf848", "\ufcc1", "\uf6ed", "\uf1bc", "\ufa9e" };
-
+static const unsigned int gappx = 10;        /* gap pixel between windows */
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class      instance    title       tags mask     isfloating   monitor */
-	{ "Spotify",  NULL,  NULL,       1 << 7,       0,		 -1 },
+	{ "Spotify",  NULL,  NULL,            1 << 7,       0,		 -1 },
 	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
 	{ "Surf",     NULL,	  NULL,	      1 << 8,	    0,		 -1 },
 };
@@ -63,18 +63,16 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[] = {"slock", NULL };
-static const char *surfcmd[] = { "surf", NULL}; 
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,			XK_s,	   spawn,	   {.v = surfcmd } },
 	{ MODKEY,                       XK_space,  togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
 	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } }, //increment no. in master
-	{ MODKEY|ShiftMask,		XK_v,      incnmaster,     {.i = -1 } }, //decrement no. in master
+	{ MODKEY,			XK_v,      incnmaster,     {.i = -1 } }, //decrement no. in master
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_z, zoom,           {0} },

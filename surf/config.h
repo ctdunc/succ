@@ -1,4 +1,3 @@
-#define HOMEPAGE "file:///home/connor/.scripts/resources/homepage.html"
 /* modifier 0 means no modifier */
 static int surfuseragent    = 1;  /* Append Surf version to default WebKit user agent */
 static char *fulluseragent  = ""; /* Or override the whole user agent string */
@@ -14,12 +13,6 @@ static char *cookiefile     = "~/.surf/cookies.txt";
  * Per-uri parameters are priority 1
  * Command parameters are priority 2
  */
-
-const static char *searchengine = "https://duckduckgo.com/html/?q=";
-const static SearchEngine searchengines[] = {
-	{ "d",	"https://duckduckgo.com/html/?q=%s"	},
-	{ "w",  "https://en.wikipedia.org/wiki/%s" 	},
-};
 static Parameter defconfig[ParameterLast] = {
 	/* parameter                    Arg value       priority */
 	[AcceleratedCanvas]   =       { { .i = 1 },     },
@@ -200,3 +193,5 @@ static Button buttons[] = {
 	{ OnAny,        0,              9,      clicknavigate,  { .i = +1 },    1 },
 	{ OnMedia,      MODKEY,         1,      clickexternplayer, { 0 },       1 },
 };
+
+#define HOMEPAGE "https://duckduckgo.com/"
