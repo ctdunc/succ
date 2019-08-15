@@ -10,7 +10,7 @@ static const char dmenufont[]       = "Fura Code Nerd Font:size=12";
 static const char col_gray1[]       = "#000000"; //background normal
 static const char col_gray2[]       = "#000000"; //border normal
 static const char col_gray3[]       = "#ababab"; //foreground normal
-static const char col_gray4[]       = "#3c7db3"; //foreground selected
+static const char col_gray4[]       = "#0000ff"; //foreground selected
 static const char col_cyan[]        = "#3CB371"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
