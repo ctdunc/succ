@@ -9,9 +9,9 @@ static const char *fonts[]          = { "Fura Code Nerd Font:size=12"  };
 static const char dmenufont[]       = "Fura Code Nerd Font:size=12";
 static const char col_gray1[]       = "#000000"; //background normal
 static const char col_gray2[]       = "#000000"; //border normal
-static const char col_gray3[]       = "#ababab"; //foreground normal
-static const char col_gray4[]       = "#0000ff"; //foreground selected
-static const char col_cyan[]        = "#3CB371"; //background/border selected
+static const char col_gray3[]       = "#d0d0d0"; //foreground normal
+static const char col_gray4[]       = "#080808"; //foreground selected
+static const char col_cyan[]        = "#00ffff"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -21,7 +21,7 @@ static const char *colors[][3]      = {
 /* tagging */
 /* { code, pdf, admin, paused, research, processing, spotify, web} */
 static const char *tags[] = { "\ue62b", "\uf02d", "\uf303","\uf8e6", "\uf848", "\ufcc1", "\uf6ed", "\uf1bc", "\ufa9e" };
-static const unsigned int gappx = 10;        /* gap pixel between windows */
+static const unsigned int gappx = 0;        /* gap pixel between windows */
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -63,7 +63,7 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[] = {"slock", NULL };
-static const char *synccmd[] = {"$HOME/.scripts/sync/$(\\ls $HOME/.scripts/sync | dmenu", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4,")", NULL };
+static const char *synccmd[] = {"\\ls", "~/.scripts|dmenu", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
