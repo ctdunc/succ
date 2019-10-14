@@ -7,11 +7,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fura Code Nerd Font:size=12"  };
 static const char dmenufont[]       = "Fura Code Nerd Font:size=12";
-static const char col_gray1[]       = "#000000"; //background normal
-static const char col_gray2[]       = "#000000"; //border normal
-static const char col_gray3[]       = "#d0d0d0"; //foreground normal
-static const char col_gray4[]       = "#080808"; //foreground selected
-static const char col_cyan[]        = "#00ffff"; //background/border selected
+static const char col_gray1[]       = "#181b22"; //background normal
+static const char col_gray2[]       = "#181b22"; //border normal
+static const char col_gray3[]       = "#a4a4a9"; //foreground normal
+static const char col_gray4[]       = "#272f3b"; //foreground selected
+static const char col_cyan[]        = "#c5b063"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
