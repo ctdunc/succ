@@ -7,11 +7,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fura Code Nerd Font:size=12"  };
 static const char dmenufont[]       = "Fura Code Nerd Font:size=12";
-static const char col_gray1[]       = "#181b22"; //background normal
-static const char col_gray2[]       = "#181b22"; //border normal
-static const char col_gray3[]       = "#a4a4a9"; //foreground normal
-static const char col_gray4[]       = "#272f3b"; //foreground selected
-static const char col_cyan[]        = "#c5b063"; //background/border selected
+static const char col_gray1[]       = "#313131"; //background normal
+static const char col_gray2[]       = "#5da9f6"; //border normal
+static const char col_gray3[]       = "#ffffff"; //foreground normal
+static const char col_gray4[]       = "#dedacf"; //foreground selected
+static const char col_cyan[]        = "#000000"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -63,13 +63,12 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[] = {"slock", NULL };
-static const char *synccmd[] = {"\\ls", "~/.scripts|dmenu", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
+static const char *classcmd[] = { "classdmenu", NULL};
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
-	{ MODKEY,			XK_s,	   spawn,	   {.v = synccmd } },
 	{ MODKEY,                       XK_space,  togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -94,6 +93,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
+	{ MODKEY|ShiftMask,		XK_d,	   spawn,	   {.v = classcmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
