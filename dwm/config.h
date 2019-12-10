@@ -1,4 +1,7 @@
-/* See LICENSE file for copyright and license details. */
+/*             
+	 _|     _ _  
+	(_|\/\/| | | 
+ */            
 
 /* appearance */
 static const unsigned int borderpx  = 2;        /* border pixel of windows */
@@ -7,11 +10,11 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Fura Code Nerd Font:size=12"  };
 static const char dmenufont[]       = "Fura Code Nerd Font:size=12";
-static const char col_gray1[]       = "#313131"; //background normal
-static const char col_gray2[]       = "#5da9f6"; //border normal
+static const char col_gray1[]       = "#000000"; //background normal
+static const char col_gray2[]       = "#000000"; //border normal
 static const char col_gray3[]       = "#ffffff"; //foreground normal
-static const char col_gray4[]       = "#dedacf"; //foreground selected
-static const char col_cyan[]        = "#000000"; //background/border selected
+static const char col_gray4[]       = "#000000"; //foreground selected
+static const char col_cyan[]        = "#009900"; //background/border selected
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
 	[SchemeNorm] = { col_gray3, col_gray1, col_gray2 },
@@ -20,8 +23,8 @@ static const char *colors[][3]      = {
 
 /* tagging */
 /* { code, pdf, admin, paused, research, processing, spotify, web} */
-static const char *tags[] = { "\ue62b", "\uf02d", "\uf303","\uf8e6", "\uf848", "\ufcc1", "\uf6ed", "\uf1bc", "\ufa9e" };
-static const unsigned int gappx = 0;        /* gap pixel between windows */
+static const char *tags[] = {"1","2","3","4","5","6","7","8","9"};
+static const unsigned int gappx = 5;        /* gap pixel between windows */
 static const Rule rules[] = {
 	/* xprop(1):
 	 *	WM_CLASS(STRING) = instance, class
@@ -63,21 +66,23 @@ static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() 
 static const char *dmenucmd[] = { "dmenu_run", "-m", dmenumon, "-fn", dmenufont, "-nb", col_gray1, "-nf", col_gray3, "-sb", col_cyan, "-sf", col_gray4, NULL };
 static const char *termcmd[]  = { "st", NULL };
 static const char *lockcmd[] = {"slock", NULL };
-static const char *classcmd[] = { "classdmenu", NULL};
-
+static const char *volcmd[] = {"st", "-e", "alsamixer",	NULL};
+static const char *screenshotcmd[] = {"maim", "-s", ">", "$(date +%F%H).jpg", NULL};
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,			XK_v,	   spawn,          {.v = volcmd } },
 	{ MODKEY,			XK_Return, spawn,          {.v = termcmd } },
+	{ MODKEY|ShiftMask,		XK_z,	   spawn,	   {.v = lockcmd } },
+	{ MODKEY,			XK_s,      spawn,	   {.v = screenshotcmd} },
 	{ MODKEY,                       XK_space,  togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
-	{ MODKEY,                       XK_c,      incnmaster,     {.i = +1 } }, //increment no. in master
-	{ MODKEY,			XK_v,      incnmaster,     {.i = -1 } }, //decrement no. in master
+	{ MODKEY|ShiftMask,		XK_c,      incnmaster,     {.i = +1 } }, //increment no. in master
+	{ MODKEY|ShiftMask,		XK_v,      incnmaster,     {.i = -1 } }, //decrement no. in master
 	{ MODKEY,                       XK_h,      setmfact,       {.f = -0.05} },
 	{ MODKEY,                       XK_l,      setmfact,       {.f = +0.05} },
 	{ MODKEY,                       XK_z, zoom,           {0} },
-	{ MODKEY|ShiftMask,		XK_z,	   spawn,	   {.v = lockcmd } },
 	{ MODKEY,                       XK_Tab,    view,           {0} },
 	{ MODKEY,                       XK_q,      killclient,     {0} },
 	{ MODKEY,                       XK_t,      setlayout,      {.v = &layouts[0]} }, //tiling layout
@@ -85,7 +90,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_w,      setlayout,      {.v = &layouts[2]} }, //monocole layout
 	{ MODKEY,			XK_e,	   setlayout,	   {.v = &layouts[3]} }, //bottom stack
 	{ MODKEY|ShiftMask,		XK_e,	   setlayout,	   {.v = &layouts[4]} }, //bottom stack hor
-	/* { MODKEY,                       XK_space,  setlayout,      {0} },*/
 	{ MODKEY|ShiftMask,             XK_space,  togglefloating, {0} },
 	{ MODKEY,                       XK_0,      view,           {.ui = ~0 } },
 	{ MODKEY|ShiftMask,             XK_0,      tag,            {.ui = ~0 } },
@@ -93,7 +97,6 @@ static Key keys[] = {
 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
-	{ MODKEY|ShiftMask,		XK_d,	   spawn,	   {.v = classcmd} },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
@@ -122,4 +125,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
